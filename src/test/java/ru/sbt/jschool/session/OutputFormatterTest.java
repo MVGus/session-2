@@ -51,6 +51,7 @@ public class OutputFormatterTest {
         doTest("4");
     }
 
+
     private void doTest(String dir) throws Exception {
         Scanner sc = new Scanner(OutputFormatterTest.class.getResourceAsStream("/" + dir + "/input.csv"));
 
@@ -91,6 +92,9 @@ public class OutputFormatterTest {
                     throw new AssertionError("Expected output is \"" + expected + "\", but actual output is empty!");
 
                 String actual = actualOutput.nextLine();
+
+                actual = actual.replace((char)160, (char)32);
+                expected = expected.replace((char)160, (char)32);
 
                 assertEquals(expected, actual);
             }
